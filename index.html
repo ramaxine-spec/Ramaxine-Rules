@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramaxine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f8ff;
+            color: #0b1a2e;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 460px;
+            width: 100%;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 44px 32px 40px;
+            box-shadow: 0 12px 48px rgba(0, 20, 60, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            object-fit: cover;
+            background: #eef3fc;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .brand {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #0b1a2e;
+        }
+        .brand span {
+            font-weight: 300;
+            color: #5b6f8e;
+        }
+        .subtitle {
+            color: #6a7d9e;
+            font-size: 14px;
+            font-weight: 400;
+            margin-top: 2px;
+            margin-bottom: 32px;
+        }
+        .btn-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+        .btn-rule {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 18px 20px;
+            border-radius: 16px;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            background: #f0f5ff;
+            color: #0b1a2e;
+            box-shadow: 0 2px 8px rgba(0, 20, 60, 0.04);
+        }
+        .btn-rule i {
+            font-size: 20px;
+            color: #2f6ef0;
+            width: 28px;
+            text-align: center;
+        }
+        .btn-rule:hover {
+            background: #e6edfe;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(47, 110, 240, 0.12);
+        }
+        .btn-rule:active {
+            transform: translateY(0);
+        }
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin: 8px 0 24px;
+        }
+        .contact-grid {
+            display: flex;
+            gap: 12px;
+        }
+        .btn-contact {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 12px;
+            border-radius: 14px;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            color: #ffffff;
+        }
+        .btn-contact i {
+            font-size: 18px;
+        }
+        .btn-wa {
+            background: #25D366;
+        }
+        .btn-wa:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.30);
+        }
+        .btn-tg {
+            background: #0088cc;
+        }
+        .btn-tg:hover {
+            background: #0077b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.30);
+        }
+        .btn-contact:active {
+            transform: translateY(0);
+        }
+        @media (max-width: 400px) {
+            .card {
+                padding: 32px 20px 28px;
+            }
+            .brand {
+                font-size: 24px;
+            }
+            .btn-rule {
+                font-size: 14px;
+                padding: 16px 16px;
+            }
+            .btn-contact {
+                font-size: 12px;
+                padding: 12px 8px;
+            }
+            .contact-grid {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+
+            <!-- Logo & Brand -->
+            <img class="logo" src="https://files.catbox.moe/uus19x.png" alt="Ramaxine" />
+            <div class="brand">Ramaxine <span>| Rules</span></div>
+            <p class="subtitle">Pilih aturan yang ingin dibaca</p>
+
+            <!-- Rule Buttons -->
+            <div class="btn-grid">
+                <a href="rules-gmaps.html" class="btn-rule">
+                    <i class="fas fa-map-pin"></i> RULES REVIEW GMAPS
+                </a>
+                <a href="rules-gmail.html" class="btn-rule">
+                    <i class="fas fa-envelope"></i> RULES CREATE GMAIL
+                </a>
+            </div>
+
+            <hr class="divider" />
+
+            <!-- Contact Buttons -->
+            <div class="contact-grid">
+                <a href="https://wa.me/628815042954" target="_blank" class="btn-contact btn-wa">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://t.me/ramaxine_id" target="_blank" class="btn-contact btn-tg">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+  </html>
