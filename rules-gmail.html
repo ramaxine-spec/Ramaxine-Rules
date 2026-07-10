@@ -125,6 +125,73 @@
             font-size: 0.95em;
             color: #1e3d7a;
         }
+        /* Tombol salin password */
+        .copy-password-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0;
+            background: #f0f4fe;
+            padding: 4px 12px 4px 8px;
+            border-radius: 8px;
+        }
+        .copy-password-wrapper code {
+            background: transparent !important;
+            padding: 0 !important;
+            font-weight: 600;
+        }
+        .btn-copy-pw {
+            background: #2f6ef0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-copy-pw:hover {
+            background: #1a56d4;
+            transform: scale(1.02);
+        }
+        .btn-copy-pw:active {
+            transform: scale(0.96);
+        }
+        .btn-copy-pw i {
+            font-size: 14px;
+        }
+        /* Toast notifikasi */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            z-index: 999;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast i {
+            margin-right: 10px;
+            color: #4ade80;
+        }
+
         @media (max-width: 640px) {
             .header {
                 padding: 14px 18px;
@@ -142,6 +209,14 @@
             .btn-back {
                 font-size: 13px;
                 padding: 8px 16px;
+            }
+            .copy-password-wrapper {
+                flex-wrap: wrap;
+                padding: 6px 12px;
+            }
+            .btn-copy-pw {
+                font-size: 12px;
+                padding: 4px 10px;
             }
         }
     </style>
@@ -171,7 +246,13 @@
 - 𝗆𝖾𝗇𝗀𝗀𝗎𝗇𝖺𝗄𝖺𝗇 𝗇𝖺𝗆𝖺 𝗆𝖺𝗇𝗎𝗌𝗂𝖺
 - 𝗍𝖺𝗇𝗀𝗀𝖺𝗅 𝗅𝖺𝗁𝗂𝗋 𝖻𝖾𝖻𝖺𝗌
 - 𝗃𝖾𝗇𝗂𝗌 𝗄𝖾𝗅𝖺𝗆𝗂𝗇 𝖻𝖾𝖻𝖺𝗌
-- 𝗉𝖺𝗌𝗌𝗐𝗈𝗋𝖽 `aass1122`
+- 𝗉𝖺𝗌𝗌𝗐𝗈𝗋𝖽 
+<div class="copy-password-wrapper">
+    <code>`aass1122`</code>
+    <button class="btn-copy-pw" id="copyPasswordBtn">
+        <i class="fas fa-copy"></i> Salin
+    </button>
+</div>
 - 𝖺𝗇𝗀𝗄𝖺 𝗆𝖺𝗄𝗌 𝟤
 
 `𝖼𝗍𝗁 𝖾𝗆𝖺𝗂𝗅 𝖻𝖾𝗇𝖺𝗋`
@@ -185,6 +266,44 @@ albianahmad12@gmail.com
             </div>
         </div>
     </div>
+
+    <!-- Toast notifikasi -->
+    <div id="toast" class="toast"><i class="fas fa-check-circle"></i> <span id="toastMessage">Tersalin!</span></div>
+
+    <script>
+        (function() {
+            const copyBtn = document.getElementById('copyPasswordBtn');
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+
+            function showToast(message) {
+                toastMsg.textContent = message;
+                toast.classList.add('show');
+                clearTimeout(window.toastTimeout);
+                window.toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }
+
+            copyBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const password = 'aass1122';
+                try {
+                    await navigator.clipboard.writeText(password);
+                    showToast('Password disalin!');
+                } catch (err) {
+                    // Fallback
+                    const textarea = document.createElement('textarea');
+                    textarea.value = password;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    showToast('Password disalin!');
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>
